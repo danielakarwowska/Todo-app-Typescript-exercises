@@ -10,25 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans:ital,wght@0,100;0,400;1,100;1,300;1,400;1,700&family=Josefin+Slab:ital,wght@0,200;0,300;1,400&family=Lobster&family=Lora:ital@1&family=Montagu+Slab:wght@100&family=Poppins:ital,wght@0,100;0,200;0,600;1,100&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-		<h1>Task List</h1>
-		<form id="new-task-form">
-			<input 
-				type="text" 
-				name="new-task-input" 
-				id="new-task-input" 
-				placeholder="What do you have planned?" />
-			<input 
-				type="submit"
-				id="new-task-submit" 
-				value="Add task" />
-		</form>
-	</header>
+		<form class="container" autocomplete="off">
+            <label for="name">Task:</label>
+            <input type="text" id="name" />
+            <ul class="categories"></ul>
+            <button>Add</button>
+            <p>Todo:</p>
+            <ul class="tasks"></ul>
+        </form>
 	<main>
 		<section class="task-list">
-			<h2>Tasks</h2>
-			<div id="tasks">
-			</div>
+			<ul class="tasks"></ul>
 		</section>
     <script type="module" src="/dist/app.js"></script>
     
