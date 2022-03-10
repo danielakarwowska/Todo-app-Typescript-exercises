@@ -13,16 +13,24 @@
 		<form class="container" autocomplete="off">
             <label for="name">Task:</label>
             <input type="text" id="name" />
-            <ul class="categories"></ul>
+            <ul class="categories">
+                    <!-- <li>
+                        <input type="radio" name="category" value="general" id="category-general"/>
+                        <label for="category-general">General</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="category" value="work" id="category-work"/>
+                        <label for="category-work">Work</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="category" value="home" id="category-home"/>
+                        <label for="category-home">Home</label>
+                    </li> -->
+            </ul>
             <button>Add</button>
             <p>Todo:</p>
             <ul class="tasks"></ul>
         </form>
-	<main>
-		<section class="task-list">
-			<ul class="tasks"></ul>
-		</section>
-    <script type="module" src="/dist/app.js"></script>
-    
+    <script type="module" src="/dist/app.js"></script> 
 </body>
 </html>

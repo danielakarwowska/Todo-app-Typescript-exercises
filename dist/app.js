@@ -1,31 +1,40 @@
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const tasksContainerElement = document.querySelector(".tasks");
+const categoriesContainerElement = document.querySelector(".categories");
+let selectedCategory;
+const categories = ["general", "work", "home"];
 const tasks = [
     {
-        title: "isc na silownie",
+        name: "isc na silownie",
         done: false,
+        category: "work",
     },
     {
-        title: "isc na silownie",
+        name: "isc na silownie",
         done: false,
+        category: "general",
     },
     {
-        title: "isc na silownie",
+        name: "isc na silownie",
         done: false,
+        category: "home",
     },
 ];
 const render = () => {
     tasksContainerElement.innerHTML = "";
     tasks.forEach((task, index) => {
         const taskElement = document.createElement("li");
-        const id = 'task-${index}';
+        if (task.category) {
+            taskElement.classList.add(task.category);
+        }
+        const id = "task-${index}";
         const labelElement = document.createElement("label");
-        labelElement.innerText = task.title;
+        labelElement.innerText = task.name;
         labelElement.setAttribute("for", id);
         const checkboxElement = document.createElement("input");
         checkboxElement.type = "checkbox";
-        checkboxElement.name = task.title;
+        checkboxElement.name = task.name;
         checkboxElement.id = id;
         checkboxElement.checked = task.done;
         checkboxElement.addEventListener("change", () => {
@@ -36,12 +45,37 @@ const render = () => {
         tasksContainerElement.appendChild(taskElement);
     });
 };
+const renderCategories = () => {
+    categories.forEach((category) => {
+        const categoryElement = document.createElement("li");
+        const radioInputElement = document.createElement("input");
+        radioInputElement.type = "radio";
+        radioInputElement.name = "category";
+        radioInputElement.value = category;
+        radioInputElement.id = `category- ${category}`;
+        radioInputElement.addEventListener("change", () => {
+            selectedCategory = category;
+        });
+        const labelElement = document.createElement("label");
+        labelElement.setAttribute("for", `category- ${category}`);
+        labelElement.innerText = category;
+        categoryElement.appendChild(labelElement);
+        categoryElement.appendChild(radioInputElement);
+        categoriesContainerElement.appendChild(categoryElement);
+    });
+};
 const addTask = (task) => {
     tasks.push(task);
 };
 addButtonElement.addEventListener("click", (event) => {
     event.preventDefault();
-    addTask({ title: taskNameInputElement.value, done: false });
+    addTask({
+        name: taskNameInputElement.value,
+        done: false,
+        category: selectedCategory,
+    });
     render();
 });
+addTask({ name: "isc do pracy", category: "work", done: false });
+renderCategories();
 render();
